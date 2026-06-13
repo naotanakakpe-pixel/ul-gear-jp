@@ -1,0 +1,22 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "ulgear-dev",
+      "runtimeExecutable": "/Users/neoneo/.local/share/fnm/node-versions/v22.22.3/installation/bin/node",
+      "runtimeArgs": ["node_modules/next/dist/bin/next", "dev"],
+      "autoPort": true,
+      "port": 3000,
+      "env": {
+        "PATH": "/Users/neoneo/.local/share/fnm/node-versions/v22.22.3/installation/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+      }
+    },
+    {
+      "name": "ulgear",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "4173", "--directory", "out"],
+      "autoPort": false,
+      "port": 4173
+    }
+  ]
+}
