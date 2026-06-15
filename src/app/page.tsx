@@ -13,6 +13,7 @@ import {
   newUid,
   saveLocal,
 } from "@/lib/share";
+import { getGear } from "@/data/gear";
 import type { ListItem } from "@/lib/types";
 
 export default function Home() {
@@ -23,15 +24,40 @@ export default function Home() {
   const [shareUrl, setShareUrl] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
 
-  // 初回マウント: URL の ?l= → localStorage の順で復元。
+  // 初回マウント: URL の ?l= → localStorage の順で復元。?add=<gearId> は既存リストに追記。
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const l = params.get("l");
-    const initial = (l && decodeListState(l)) || loadLocal();
-    if (initial) {
-      setItems(initial.items);
-      if (initial.title) setTitle(initial.title);
-      if (initial.goalBaseG) setGoalBaseG(initial.goalBaseG);
+    const restored = (l && decodeListState(l)) || loadLocal();
+    if (restored?.title) setTitle(restored.title);
+    if (restored?.goalBaseG) setGoalBaseG(restored.goalBaseG);
+
+    let nextItems = restored?.items ?? [];
+    const addId = params.get("add");
+    if (addId) {
+      const g = getGear(addId);
+      if (g) {
+        nextItems = [
+          ...nextItems,
+          {
+            uid: newUid(),
+            gearId: g.id,
+            brand: g.brand,
+            name: g.name,
+            category: g.category,
+            weight_g: g.weight_g,
+            qty: 1,
+            consumable: false,
+            worn: false,
+          },
+        ];
+      }
+    }
+    if (nextItems.length) setItems(nextItems);
+
+    // ?l= / ?add= はstate＋localStorageに取り込んだのでURLから除去（リロードでの二重適用防止）。
+    if (l || addId) {
+      window.history.replaceState({}, "", window.location.pathname);
     }
     setHydrated(true);
   }, []);

@@ -1,9 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import { searchGear } from "@/data/gear";
 import { CATEGORIES, categoryColor, categoryLabel } from "@/lib/categories";
+import { CONFIDENCE_LABEL, CONFIDENCE_STYLE } from "@/lib/gear-meta";
 import { formatWeight } from "@/lib/weight";
+import { gearPath } from "@/lib/site";
 import type { GearCategory, GearItem, ListItem } from "@/lib/types";
 
 export type NewItem = Omit<ListItem, "uid">;
@@ -11,18 +14,6 @@ export type NewItem = Omit<ListItem, "uid">;
 interface GearPickerProps {
   onAdd: (item: NewItem) => void;
 }
-
-const CONFIDENCE_LABEL: Record<GearItem["confidence"], string> = {
-  high: "確度高",
-  medium: "要確認",
-  low: "下書き",
-};
-
-const CONFIDENCE_STYLE: Record<GearItem["confidence"], string> = {
-  high: "bg-green-100 text-green-700",
-  medium: "bg-amber-100 text-amber-700",
-  low: "bg-slate-100 text-slate-500",
-};
 
 export default function GearPicker({ onAdd }: GearPickerProps) {
   const [mode, setMode] = useState<"db" | "manual">("db");
@@ -77,11 +68,11 @@ export default function GearPicker({ onAdd }: GearPickerProps) {
           />
           <ul className="mt-3 max-h-72 overflow-y-auto pr-1">
             {results.map((g) => (
-              <li key={g.id}>
+              <li key={g.id} className="flex items-center gap-1">
                 <button
                   type="button"
                   onClick={() => addFromDb(g)}
-                  className="group flex w-full items-center gap-3 rounded-lg px-2 py-2 text-left transition hover:bg-blue-50"
+                  className="group flex flex-1 items-center gap-3 rounded-lg px-2 py-2 text-left transition hover:bg-blue-50"
                 >
                   <span
                     className="h-8 w-1.5 shrink-0 rounded-full"
@@ -104,9 +95,16 @@ export default function GearPicker({ onAdd }: GearPickerProps) {
                     {formatWeight(g.weight_g)}
                   </span>
                   <span className="shrink-0 text-blue-500 opacity-0 transition group-hover:opacity-100">
-                    ＋
+                    ＋追加
                   </span>
                 </button>
+                <Link
+                  href={gearPath(g.id)}
+                  className="shrink-0 rounded-lg px-2 py-2 text-xs text-slate-400 transition hover:text-blue-600"
+                  title="スペック詳細ページ"
+                >
+                  詳細
+                </Link>
               </li>
             ))}
             {results.length === 0 && (
