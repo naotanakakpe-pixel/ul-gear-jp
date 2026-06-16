@@ -6,12 +6,12 @@ import raw from "./gear.json";
  *
  * 重量データ検証履歴（CLAUDE.md §8）:
  *   2026-06-16 に全17点を一次情報（メーカー公式／大手店舗）で確認し、weight_g・source_url・
- *   source_type・confidence を更新済み。
+ *   source_type・confidence を更新。medium点も再検証して16点を high に確定。
  *   - confidence "high": 公式スペック等で確認できた値。
- *   - confidence "medium": サイズ/カラー/モデル違いで重量が振れる、または店舗値由来で要再確認のもの
- *     （HMG Southwest 40＝サイズ/カラー差、mont-bell バーサライト＝平均重量、PaaGo RUSH28、
- *      NANGA ミニマリズム180＝総重量・店舗値、Anker＝型番差）。
- *   ※ price_jpy は今回の検証対象外。参考値であり要再確認。
+ *   - confidence "medium": HMG Southwest 40 のみ。サイズ(S/M/L/Tall)・カラー(白/黒)で重量が実際に
+ *     振れるため単一値にできず据え置き（DB値は size M・ホワイト基準の 841g）。
+ *   ※ price_jpy: MINI2/NANGA/SOTO/finetrack は公式・希望小売で確定。それ以外（特に輸入品）は
+ *     国内実売が流通でばらつくため参考値。収益導線に使う前に要再確認。
  */
 export const GEAR: GearItem[] = raw as GearItem[];
 
