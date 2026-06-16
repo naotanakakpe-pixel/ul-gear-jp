@@ -5,13 +5,15 @@ import raw from "./gear.json";
  * シードギアDB（読み取り専用）。
  *
  * 重量データ検証履歴（CLAUDE.md §8）:
- *   2026-06-16 に全17点を一次情報（メーカー公式／大手店舗）で確認し、weight_g・source_url・
- *   source_type・confidence を更新。medium点も再検証して16点を high に確定。
- *   - confidence "high": 公式スペック等で確認できた値。
- *   - confidence "medium": HMG Southwest 40 のみ。サイズ(S/M/L/Tall)・カラー(白/黒)で重量が実際に
- *     振れるため単一値にできず据え置き（DB値は size M・ホワイト基準の 841g）。
- *   ※ price_jpy: MINI2/NANGA/SOTO/finetrack は公式・希望小売で確定。それ以外（特に輸入品）は
- *     国内実売が流通でばらつくため参考値。収益導線に使う前に要再確認。
+ *   2026-06-16 に全48点を一次情報（メーカー公式／大手店舗）で確認し weight_g・source_url・
+ *   source_type・confidence を付与。各カテゴリの定番を網羅（backpack7/shelter9/sleep6/cook8/
+ *   clothing6/electronics4/hydration5/misc3）。
+ *   - confidence "high"（32点）: 公式スペック等で単一値が確認できたもの。
+ *   - confidence "medium"（16点）: サイズ/カラー/構成で重量が実際に振れるもの（バックパックの
+ *     サイズ差、ウェア類のサイズ差＝公式平均/Mサイズ基準、トレッキングポールの長さ差、TOAKS550の
+ *     蓋有無 等）。値は代表構成（例: HMG=M・白841g）で、現物確定でさらに詰められる。
+ *   ※ price_jpy は一部のみ（主に山と道/NANGA/SOTO/finetrack/mont-bell/Patagonia/Anker 等の確認済
+ *     国内定番）。未記載＝未確認のため省略。輸入品は国内実売がばらつくので収益導線前に要確認。
  */
 export const GEAR: GearItem[] = raw as GearItem[];
 

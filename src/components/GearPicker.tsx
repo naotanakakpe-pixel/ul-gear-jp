@@ -18,8 +18,12 @@ interface GearPickerProps {
 export default function GearPicker({ onAdd }: GearPickerProps) {
   const [mode, setMode] = useState<"db" | "manual">("db");
   const [query, setQuery] = useState("");
+  const [catFilter, setCatFilter] = useState<GearCategory | "all">("all");
 
-  const results = useMemo(() => searchGear(query), [query]);
+  const results = useMemo(() => {
+    const base = searchGear(query);
+    return catFilter === "all" ? base : base.filter((g) => g.category === catFilter);
+  }, [query, catFilter]);
 
   function addFromDb(g: GearItem) {
     onAdd({
@@ -66,7 +70,28 @@ export default function GearPicker({ onAdd }: GearPickerProps) {
             placeholder="ブランド・製品名で検索（例: 山と道、テント）"
             className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
           />
-          <ul className="mt-3 max-h-72 overflow-y-auto pr-1">
+
+          {/* カテゴリ絞り込み */}
+          <div className="mt-2 flex gap-1.5 overflow-x-auto pb-1">
+            <FilterChip
+              active={catFilter === "all"}
+              onClick={() => setCatFilter("all")}
+              label="全て"
+            />
+            {CATEGORIES.map((c) => (
+              <FilterChip
+                key={c.id}
+                active={catFilter === c.id}
+                onClick={() => setCatFilter(c.id)}
+                label={c.label}
+                color={c.color}
+              />
+            ))}
+          </div>
+
+          <p className="mt-1 px-1 text-xs text-slate-400">{results.length}件</p>
+
+          <ul className="mt-1 max-h-80 overflow-y-auto pr-1">
             {results.map((g) => (
               <li key={g.id} className="flex items-center gap-1">
                 <button
@@ -118,6 +143,38 @@ export default function GearPicker({ onAdd }: GearPickerProps) {
         <ManualForm onAdd={onAdd} />
       )}
     </div>
+  );
+}
+
+function FilterChip({
+  active,
+  onClick,
+  label,
+  color,
+}: {
+  active: boolean;
+  onClick: () => void;
+  label: string;
+  color?: string;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`flex shrink-0 items-center gap-1 rounded-full border px-2.5 py-1 text-xs font-medium transition ${
+        active
+          ? "border-slate-800 bg-slate-800 text-white"
+          : "border-slate-200 bg-white text-slate-600 hover:bg-slate-50"
+      }`}
+    >
+      {color && (
+        <span
+          className="inline-block h-2 w-2 rounded-full"
+          style={{ backgroundColor: active ? "#fff" : color }}
+        />
+      )}
+      {label}
+    </button>
   );
 }
 

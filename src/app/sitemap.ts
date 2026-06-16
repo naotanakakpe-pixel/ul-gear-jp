@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     { url: `${SITE_URL}/`, lastModified: now, changeFrequency: "weekly", priority: 1 },
     { url: `${SITE_URL}/gear/`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${SITE_URL}/about/`, lastModified: now, changeFrequency: "monthly", priority: 0.3 },
   ];
   const gearPages: MetadataRoute.Sitemap = allGear().map((g) => ({
     url: gearUrl(g.id),

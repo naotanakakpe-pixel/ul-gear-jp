@@ -13,6 +13,30 @@
     "lighter_alternatives": []
   },
   {
+    "id": "yamatomichi-three",
+    "brand": "山と道",
+    "name": "THREE",
+    "category": "backpack",
+    "weight_g": 620,
+    "capacity": "約40L（Mサイズ）",
+    "source_type": "manufacturer",
+    "confidence": "medium",
+    "source_url": "https://www.yamatomichi.com/products/three",
+    "lighter_alternatives": ["yamatomichi-mini2"]
+  },
+  {
+    "id": "yamatomichi-one",
+    "brand": "山と道",
+    "name": "ONE",
+    "category": "backpack",
+    "weight_g": 538,
+    "capacity": "50-55L",
+    "source_type": "manufacturer",
+    "confidence": "medium",
+    "source_url": "https://www.yamatomichi.com/products/one",
+    "lighter_alternatives": ["yamatomichi-mini2"]
+  },
+  {
     "id": "hmg-southwest-40",
     "brand": "Hyperlite Mountain Gear",
     "name": "Southwest 40",
@@ -24,6 +48,30 @@
     "confidence": "medium",
     "source_url": "https://www.rei.com/product/C02640/hyperlite-mountain-gear-southwest-40-pack",
     "lighter_alternatives": ["yamatomichi-mini2"]
+  },
+  {
+    "id": "gossamer-mariposa-60",
+    "brand": "Gossamer Gear",
+    "name": "Mariposa 60",
+    "category": "backpack",
+    "weight_g": 968,
+    "capacity": "60L",
+    "source_type": "manufacturer",
+    "confidence": "medium",
+    "source_url": "https://www.gossamergear.com/products/mariposa-60",
+    "lighter_alternatives": ["yamatomichi-three"]
+  },
+  {
+    "id": "ula-circuit",
+    "brand": "ULA Equipment",
+    "name": "Circuit",
+    "category": "backpack",
+    "weight_g": 1092,
+    "capacity": "68L",
+    "source_type": "manufacturer",
+    "confidence": "medium",
+    "source_url": "https://www.ula-equipment.com/product/circuit/",
+    "lighter_alternatives": ["gossamer-mariposa-60"]
   },
   {
     "id": "paagoworks-rush28",
@@ -49,7 +97,55 @@
     "source_type": "manufacturer",
     "confidence": "high",
     "source_url": "https://www.finetrack.com/products/zelt/zelt2long/",
+    "lighter_alternatives": ["heritage-crossover-dome-f-2g"]
+  },
+  {
+    "id": "heritage-crossover-dome-2g",
+    "brand": "HERITAGE",
+    "name": "クロスオーバードーム〈2G〉",
+    "category": "shelter",
+    "weight_g": 690,
+    "capacity": "1〜2人用",
+    "source_type": "manufacturer",
+    "confidence": "high",
+    "source_url": "https://heritage.co.jp/Gears/COD_2G.html",
+    "lighter_alternatives": ["heritage-crossover-dome-f-2g"]
+  },
+  {
+    "id": "heritage-crossover-dome-f-2g",
+    "brand": "HERITAGE",
+    "name": "クロスオーバードーム f〈2G〉",
+    "category": "shelter",
+    "weight_g": 540,
+    "capacity": "1人用",
+    "source_type": "manufacturer",
+    "confidence": "high",
+    "source_url": "https://heritage.co.jp/Gears/COD_2G.html",
     "lighter_alternatives": []
+  },
+  {
+    "id": "durston-xmid-1",
+    "brand": "Durston Gear",
+    "name": "X-Mid 1",
+    "category": "shelter",
+    "weight_g": 720,
+    "capacity": "1人用",
+    "source_type": "manufacturer",
+    "confidence": "medium",
+    "source_url": "https://durstongear.com/products/x-mid-1-tent-ultralight-backpacking",
+    "lighter_alternatives": ["zpacks-plexsolo"]
+  },
+  {
+    "id": "sixmoon-lunar-solo",
+    "brand": "Six Moon Designs",
+    "name": "Lunar Solo",
+    "category": "shelter",
+    "weight_g": 740,
+    "capacity": "1人用",
+    "source_type": "manufacturer",
+    "confidence": "high",
+    "source_url": "https://www.sixmoondesigns.com/products/lunar-solo-tent",
+    "lighter_alternatives": ["zpacks-plexsolo"]
   },
   {
     "id": "zpacks-plexsolo",
@@ -62,7 +158,43 @@
     "source_type": "manufacturer",
     "confidence": "high",
     "source_url": "https://zpacks.com/products/plex-solo-tent",
-    "lighter_alternatives": ["finetrack-zelt2long"]
+    "lighter_alternatives": ["heritage-crossover-dome-f-2g"]
+  },
+  {
+    "id": "zpacks-duplex",
+    "brand": "Zpacks",
+    "name": "Duplex",
+    "category": "shelter",
+    "weight_g": 577,
+    "capacity": "2人用",
+    "source_type": "manufacturer",
+    "confidence": "high",
+    "source_url": "https://zpacks.com/products/duplex-tent",
+    "lighter_alternatives": []
+  },
+  {
+    "id": "tarptent-protrail",
+    "brand": "Tarptent",
+    "name": "ProTrail",
+    "category": "shelter",
+    "weight_g": 737,
+    "capacity": "1人用",
+    "source_type": "manufacturer",
+    "confidence": "high",
+    "source_url": "https://www.tarptent.com/product/protrail/",
+    "lighter_alternatives": ["zpacks-plexsolo"]
+  },
+  {
+    "id": "sol-escape-bivvy",
+    "brand": "SOL",
+    "name": "エスケープ ヴィヴィ",
+    "category": "shelter",
+    "weight_g": 240,
+    "capacity": "緊急ビヴィ",
+    "source_type": "manufacturer",
+    "confidence": "medium",
+    "source_url": "https://www.surviveoutdoorslonger.com/products/escape-bivvy",
+    "lighter_alternatives": []
   },
   {
     "id": "thermarest-neoair-xlite-nxt",
@@ -74,6 +206,18 @@
     "source_type": "manufacturer",
     "confidence": "high",
     "source_url": "https://cascadedesigns.com/products/neoair-xlite-nxt-sleeping-pad",
+    "lighter_alternatives": ["yamatomichi-ulpad15"]
+  },
+  {
+    "id": "thermarest-zlite-sol",
+    "brand": "Therm-a-Rest",
+    "name": "Zライト ソル（R）",
+    "category": "sleep",
+    "weight_g": 410,
+    "capacity": "クローズドセル",
+    "source_type": "manufacturer",
+    "confidence": "high",
+    "source_url": "https://www.thermarest.com/",
     "lighter_alternatives": ["yamatomichi-ulpad15"]
   },
   {
@@ -103,6 +247,30 @@
     "lighter_alternatives": []
   },
   {
+    "id": "nanga-udd-bag-380dx",
+    "brand": "NANGA",
+    "name": "UDD BAG 380DX",
+    "category": "sleep",
+    "weight_g": 680,
+    "capacity": "快適3℃・レギュラー",
+    "source_type": "manufacturer",
+    "confidence": "high",
+    "source_url": "https://nanga.jp/en/product/sleeping-bag/udd/udd-bag-380dx/",
+    "lighter_alternatives": ["nanga-minimarhythm-180"]
+  },
+  {
+    "id": "montbell-downhugger-900-3",
+    "brand": "mont-bell",
+    "name": "シームレス ダウンハガー900 #3",
+    "category": "sleep",
+    "weight_g": 512,
+    "capacity": "#3（快適4℃前後）",
+    "source_type": "manufacturer",
+    "confidence": "high",
+    "source_url": "https://webshop.montbell.jp/goods/disp_fo.php?product_id=1121391",
+    "lighter_alternatives": ["nanga-minimarhythm-180"]
+  },
+  {
     "id": "brs-3000t",
     "brand": "BRS",
     "name": "3000T",
@@ -128,6 +296,29 @@
     "lighter_alternatives": ["brs-3000t"]
   },
   {
+    "id": "soto-amicus",
+    "brand": "SOTO",
+    "name": "アミカス SOD-320",
+    "category": "cook",
+    "weight_g": 81,
+    "capacity": "本体のみ",
+    "source_type": "manufacturer",
+    "confidence": "high",
+    "source_url": "https://soto.shinfuji.co.jp/products/sod-320/",
+    "lighter_alternatives": ["brs-3000t"]
+  },
+  {
+    "id": "msr-pocketrocket-2",
+    "brand": "MSR",
+    "name": "PocketRocket 2",
+    "category": "cook",
+    "weight_g": 73,
+    "source_type": "retailer",
+    "confidence": "high",
+    "source_url": "https://www.rei.com/product/114890/msr-pocketrocket-2-stove",
+    "lighter_alternatives": ["brs-3000t"]
+  },
+  {
     "id": "toaks-750",
     "brand": "TOAKS",
     "name": "Titanium 750ml Pot（蓋込み）",
@@ -137,6 +328,42 @@
     "source_type": "manufacturer",
     "confidence": "high",
     "source_url": "https://www.toaksoutdoor.com/products/pot-750",
+    "lighter_alternatives": ["toaks-550"]
+  },
+  {
+    "id": "toaks-550",
+    "brand": "TOAKS",
+    "name": "Titanium 550ml Pot",
+    "category": "cook",
+    "weight_g": 72,
+    "capacity": "550ml",
+    "source_type": "manufacturer",
+    "confidence": "medium",
+    "source_url": "https://www.toaksoutdoor.com/products/pot-550",
+    "lighter_alternatives": []
+  },
+  {
+    "id": "evernew-ti-570fd",
+    "brand": "EVERNEW",
+    "name": "Ti 570FD Cup",
+    "category": "cook",
+    "weight_g": 55,
+    "capacity": "570ml",
+    "source_type": "manufacturer",
+    "confidence": "high",
+    "source_url": "https://outdoor.evernew.co.jp/products/detail/5591",
+    "lighter_alternatives": []
+  },
+  {
+    "id": "snowpeak-ti-single-450",
+    "brand": "snow peak",
+    "name": "チタンシングルマグ 450",
+    "category": "cook",
+    "weight_g": 70,
+    "capacity": "450ml",
+    "source_type": "manufacturer",
+    "confidence": "high",
+    "source_url": "https://ec.snowpeak.co.jp/item/SNP0117A0185",
     "lighter_alternatives": []
   },
   {
@@ -164,6 +391,50 @@
     "lighter_alternatives": []
   },
   {
+    "id": "montbell-plasma1000",
+    "brand": "mont-bell",
+    "name": "プラズマ1000 ダウンジャケット（Men's）",
+    "category": "clothing",
+    "weight_g": 130,
+    "source_type": "manufacturer",
+    "confidence": "medium",
+    "source_url": "https://www.montbell.com/jp/ja/products/detail/2301381",
+    "lighter_alternatives": []
+  },
+  {
+    "id": "patagonia-nano-puff",
+    "brand": "Patagonia",
+    "name": "ナノパフ ジャケット（Men's）",
+    "category": "clothing",
+    "weight_g": 369,
+    "source_type": "manufacturer",
+    "confidence": "medium",
+    "source_url": "https://www.patagonia.com/product/mens-nano-puff-insulated-jacket/84213.html",
+    "lighter_alternatives": []
+  },
+  {
+    "id": "patagonia-r1-air-hoody",
+    "brand": "Patagonia",
+    "name": "R1 Air フルジップ フーディ（Men's）",
+    "category": "clothing",
+    "weight_g": 366,
+    "source_type": "retailer",
+    "confidence": "medium",
+    "source_url": "https://www.rei.com/product/249815/patagonia-r1-air-full-zip-hoody-mens",
+    "lighter_alternatives": []
+  },
+  {
+    "id": "yamatomichi-ul-allweather-hoody",
+    "brand": "山と道",
+    "name": "UL All-weather Hoody（Sサイズ）",
+    "category": "clothing",
+    "weight_g": 130,
+    "source_type": "manufacturer",
+    "confidence": "medium",
+    "source_url": "https://www.yamatomichi.com/",
+    "lighter_alternatives": ["montbell-versalite"]
+  },
+  {
     "id": "anker-powercore-10000",
     "brand": "Anker",
     "name": "PowerCore 10000（A1263）",
@@ -173,6 +444,18 @@
     "source_type": "manufacturer",
     "confidence": "high",
     "source_url": "https://service.anker.com/product-description/a085g000004x2B3AAI/powercore-10000",
+    "lighter_alternatives": ["nitecore-nb10000"]
+  },
+  {
+    "id": "nitecore-nb10000",
+    "brand": "Nitecore",
+    "name": "NB10000 Gen2",
+    "category": "electronics",
+    "weight_g": 150,
+    "capacity": "10000mAh",
+    "source_type": "manufacturer",
+    "confidence": "high",
+    "source_url": "https://www.nitecore.com/product/nb10000",
     "lighter_alternatives": []
   },
   {
@@ -185,6 +468,17 @@
     "source_type": "manufacturer",
     "confidence": "high",
     "source_url": "https://www.petzl.com/INT/en/Sport/Headlamps/BINDI",
+    "lighter_alternatives": ["petzl-eplite"]
+  },
+  {
+    "id": "petzl-eplite",
+    "brand": "Petzl",
+    "name": "e+LITE",
+    "category": "electronics",
+    "weight_g": 26,
+    "source_type": "manufacturer",
+    "confidence": "high",
+    "source_url": "https://www.petzl.com/INT/en/Operators/Headlamps/ePLUSLITE",
     "lighter_alternatives": []
   },
   {
@@ -193,11 +487,24 @@
     "name": "Platy 2L ボトル",
     "category": "hydration",
     "weight_g": 36,
+    "capacity": "2L",
     "price_jpy": 2200,
     "source_type": "manufacturer",
     "confidence": "high",
     "source_url": "https://cascadedesigns.com/products/platy-2l-bottle",
     "lighter_alternatives": []
+  },
+  {
+    "id": "cnoc-vecto-2l",
+    "brand": "CNOC",
+    "name": "Vecto 2L（28mm）",
+    "category": "hydration",
+    "weight_g": 76,
+    "capacity": "2L",
+    "source_type": "manufacturer",
+    "confidence": "high",
+    "source_url": "https://cnocoutdoors.com/",
+    "lighter_alternatives": ["platypus-platy-2l"]
   },
   {
     "id": "sawyer-squeeze",
@@ -209,6 +516,65 @@
     "source_type": "manufacturer",
     "confidence": "high",
     "source_url": "https://sawyer.com/",
+    "lighter_alternatives": ["katadyn-befree-06"]
+  },
+  {
+    "id": "katadyn-befree-06",
+    "brand": "Katadyn",
+    "name": "BeFree 0.6L",
+    "category": "hydration",
+    "weight_g": 59,
+    "capacity": "0.6L",
+    "source_type": "manufacturer",
+    "confidence": "high",
+    "source_url": "https://www.katadyngroup.com/us/en/8019639-katadyn-befree-0.6-us~p10915",
+    "lighter_alternatives": []
+  },
+  {
+    "id": "platypus-quickdraw",
+    "brand": "Platypus",
+    "name": "QuickDraw（フィルター）",
+    "category": "hydration",
+    "weight_g": 62,
+    "source_type": "manufacturer",
+    "confidence": "medium",
+    "source_url": "https://www.platy.com/",
+    "lighter_alternatives": ["katadyn-befree-06"]
+  },
+  {
+    "id": "bd-distance-carbon-z",
+    "brand": "Black Diamond",
+    "name": "ディスタンス カーボン Z（ペア）",
+    "category": "misc",
+    "weight_g": 280,
+    "capacity": "120cm・ペア",
+    "source_type": "retailer",
+    "confidence": "medium",
+    "source_url": "https://www.rei.com/product/202395/black-diamond-distance-carbon-z-poles-pair",
+    "lighter_alternatives": ["gossamer-lt5"]
+  },
+  {
+    "id": "gossamer-lt5",
+    "brand": "Gossamer Gear",
+    "name": "LT5（ペア）",
+    "category": "misc",
+    "weight_g": 278,
+    "capacity": "ペア",
+    "source_type": "manufacturer",
+    "confidence": "medium",
+    "source_url": "https://www.gossamergear.com/products/lt5-three-piece-carbon-trekking-poles-pair",
+    "lighter_alternatives": []
+  },
+  {
+    "id": "seatosummit-ultrasil-drysack-8l",
+    "brand": "Sea to Summit",
+    "name": "ウルトラシル ドライサック 8L",
+    "category": "misc",
+    "weight_g": 36,
+    "capacity": "8L",
+    "source_type": "manufacturer",
+    "confidence": "medium",
+    "source_url": "https://seatosummit.com/products/ultra-sil-dry-bag",
     "lighter_alternatives": []
   }
 ]

@@ -16,6 +16,22 @@ import {
 import { getGear } from "@/data/gear";
 import type { ListItem } from "@/lib/types";
 
+// 「サンプルを読み込む」で投入する定番1泊2日テント泊セット。
+const SAMPLE_GEAR_IDS = [
+  "yamatomichi-mini2",
+  "heritage-crossover-dome-f-2g",
+  "thermarest-neoair-xlite-nxt",
+  "nanga-minimarhythm-180",
+  "soto-windmaster",
+  "toaks-750",
+  "montbell-versalite",
+  "anker-powercore-10000",
+  "petzl-bindi",
+  "platypus-platy-2l",
+  "sawyer-squeeze",
+  "bd-distance-carbon-z",
+];
+
 export default function Home() {
   const [items, setItems] = useState<ListItem[]>([]);
   const [title, setTitle] = useState("マイギアリスト");
@@ -114,6 +130,24 @@ export default function Home() {
     }
   }
 
+  function loadSample() {
+    const sample = SAMPLE_GEAR_IDS.map((id) => getGear(id))
+      .filter((g): g is NonNullable<typeof g> => Boolean(g))
+      .map((g) => ({
+        uid: newUid(),
+        gearId: g.id,
+        brand: g.brand,
+        name: g.name,
+        category: g.category,
+        weight_g: g.weight_g,
+        qty: 1,
+        consumable: false,
+        worn: false,
+      }));
+    setItems(sample);
+    setTitle("サンプル：1泊2日テント泊");
+  }
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:py-10">
       <header className="mb-8">
@@ -137,10 +171,17 @@ export default function Home() {
 
           <div className="rounded-2xl border border-slate-200 bg-white shadow-sm">
             {items.length === 0 ? (
-              <div className="px-6 py-12 text-center">
+              <div className="flex flex-col items-center gap-3 px-6 py-12 text-center">
                 <p className="text-sm text-slate-500">
                   下の「DBから選ぶ」または「手入力」でギアを追加してください。
                 </p>
+                <button
+                  type="button"
+                  onClick={loadSample}
+                  className="rounded-lg border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700 transition hover:bg-blue-100"
+                >
+                  サンプルを読み込む（1泊2日テント泊）
+                </button>
               </div>
             ) : (
               <ul className="divide-y divide-slate-100">
@@ -242,88 +283,89 @@ function GearRow({
   const lineTotal = item.weight_g * item.qty;
 
   return (
-    <li className="flex flex-wrap items-center gap-x-3 gap-y-2 px-4 py-3">
-      <span
-        className="h-9 w-1.5 shrink-0 rounded-full"
-        style={{ backgroundColor: categoryColor(item.category) }}
-        title={categoryLabel(item.category)}
-      />
-      <div className="min-w-0 flex-1 basis-40">
-        <p className="truncate text-sm font-medium text-slate-800">
-          {item.brand && <span className="text-slate-500">{item.brand} </span>}
-          {item.name}
-        </p>
-        <p className="text-xs text-slate-400">{categoryLabel(item.category)}</p>
-      </div>
-
-      {/* 重量（編集可） */}
-      <div className="flex items-center rounded-lg border border-slate-200 px-2 focus-within:border-blue-500">
-        <input
-          type="number"
-          min="0"
-          value={item.weight_g}
-          onChange={(e) => {
-            const w = Number(e.target.value);
-            if (Number.isFinite(w) && w >= 0) onUpdate(item.uid, { weight_g: Math.round(w) });
-          }}
-          className="tabular w-14 py-1 text-right text-sm outline-none"
+    <li className="px-4 py-3">
+      {/* 上段: カテゴリ色・名前・行合計・削除 */}
+      <div className="flex items-center gap-2">
+        <span
+          className="h-7 w-1.5 shrink-0 rounded-full"
+          style={{ backgroundColor: categoryColor(item.category) }}
+          title={categoryLabel(item.category)}
         />
-        <span className="text-xs text-slate-400">g</span>
-      </div>
-
-      {/* 数量ステッパー */}
-      <div className="flex items-center rounded-lg border border-slate-200">
+        <div className="min-w-0 flex-1">
+          <p className="truncate text-sm font-medium text-slate-800">
+            {item.brand && <span className="text-slate-500">{item.brand} </span>}
+            {item.name}
+          </p>
+          <p className="text-xs text-slate-400">{categoryLabel(item.category)}</p>
+        </div>
+        <span className="tabular shrink-0 text-right text-sm font-semibold text-slate-700">
+          {formatWeight(lineTotal)}
+        </span>
         <button
           type="button"
-          onClick={() => onUpdate(item.uid, { qty: Math.max(1, item.qty - 1) })}
-          className="px-2 py-1 text-slate-500 hover:text-slate-900"
-          aria-label="数量を減らす"
+          onClick={() => onRemove(item.uid)}
+          className="shrink-0 px-1 text-slate-300 transition hover:text-red-500"
+          aria-label="削除"
         >
-          −
-        </button>
-        <span className="tabular w-7 text-center text-sm">{item.qty}</span>
-        <button
-          type="button"
-          onClick={() => onUpdate(item.uid, { qty: item.qty + 1 })}
-          className="px-2 py-1 text-slate-500 hover:text-slate-900"
-          aria-label="数量を増やす"
-        >
-          ＋
+          ✕
         </button>
       </div>
 
-      {/* フラグ */}
-      <div className="flex gap-1">
-        <FlagChip
-          active={item.consumable}
-          onClick={() => onUpdate(item.uid, { consumable: !item.consumable })}
-          activeClass="bg-orange-100 text-orange-700 ring-orange-300"
-          title="消耗品（水・食料・燃料）"
-        >
-          消
-        </FlagChip>
-        <FlagChip
-          active={item.worn}
-          onClick={() => onUpdate(item.uid, { worn: !item.worn })}
-          activeClass="bg-cyan-100 text-cyan-700 ring-cyan-300"
-          title="着用品（常時着用）"
-        >
-          着
-        </FlagChip>
+      {/* 下段: 重量・数量・フラグ */}
+      <div className="mt-2 flex items-center gap-2 pl-3.5">
+        <div className="flex items-center rounded-lg border border-slate-200 px-2 focus-within:border-blue-500">
+          <input
+            type="number"
+            min="0"
+            value={item.weight_g}
+            onChange={(e) => {
+              const w = Number(e.target.value);
+              if (Number.isFinite(w) && w >= 0) onUpdate(item.uid, { weight_g: Math.round(w) });
+            }}
+            className="tabular w-14 py-1 text-right text-sm outline-none"
+          />
+          <span className="text-xs text-slate-400">g</span>
+        </div>
+
+        <div className="flex items-center rounded-lg border border-slate-200">
+          <button
+            type="button"
+            onClick={() => onUpdate(item.uid, { qty: Math.max(1, item.qty - 1) })}
+            className="px-2 py-1 text-slate-500 hover:text-slate-900"
+            aria-label="数量を減らす"
+          >
+            −
+          </button>
+          <span className="tabular w-7 text-center text-sm">{item.qty}</span>
+          <button
+            type="button"
+            onClick={() => onUpdate(item.uid, { qty: item.qty + 1 })}
+            className="px-2 py-1 text-slate-500 hover:text-slate-900"
+            aria-label="数量を増やす"
+          >
+            ＋
+          </button>
+        </div>
+
+        <div className="flex gap-1">
+          <FlagChip
+            active={item.consumable}
+            onClick={() => onUpdate(item.uid, { consumable: !item.consumable })}
+            activeClass="bg-orange-100 text-orange-700 ring-orange-300"
+            title="消耗品（水・食料・燃料）"
+          >
+            消
+          </FlagChip>
+          <FlagChip
+            active={item.worn}
+            onClick={() => onUpdate(item.uid, { worn: !item.worn })}
+            activeClass="bg-cyan-100 text-cyan-700 ring-cyan-300"
+            title="着用品（常時着用）"
+          >
+            着
+          </FlagChip>
+        </div>
       </div>
-
-      <span className="tabular w-16 shrink-0 text-right text-sm font-semibold text-slate-700">
-        {formatWeight(lineTotal)}
-      </span>
-
-      <button
-        type="button"
-        onClick={() => onRemove(item.uid)}
-        className="shrink-0 px-1 text-slate-300 transition hover:text-red-500"
-        aria-label="削除"
-      >
-        ✕
-      </button>
     </li>
   );
 }
